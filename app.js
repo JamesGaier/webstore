@@ -5,7 +5,7 @@ const cors = require("cors");
 const app = express();
 const port = 3000;
 
-//app.use("/", express.static(path.join(__dirname, "views")));
+app.use("/public", express.static(path.join(__dirname, "public")));
 app.use(bodyParser());
 app.use(cors());
 
@@ -19,6 +19,14 @@ app.get("/", (req, res) => {
             {name: "dave"},
             {name: "jerry"}
         ]
+    });
+});
+app.get("/item", (req, res) => {
+    res.render("item", {
+       dress: {
+            name: "blah",
+            url: "public/images/1.png"
+        }
     });
 });
 
